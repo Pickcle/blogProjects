@@ -39,48 +39,40 @@ package
 		
 		private function onClickHandler1(e:MouseEvent):void
 		{
-			var ary:Array = [];
-			var point:Point = new Point(stage.mouseX, stage.mouseY);
-			trace("e.target:" + e.target.name);
-			trace("-----globalToLocal-----");
-			trace("stageMouseX:" + point.x);
-			trace("stageMouseY:" + point.y);
-			trace("localX:" + smallShape.globalToLocal(point).x);
-			trace("localY:" + smallShape.globalToLocal(point).y);
-			trace("-----localToGlobal-----");
-			point = new Point(e.localX, e.localY);
-			trace("localX:" + point.x);
-			trace("localY:" + point.y);
-			trace("stageMouseX:" + smallShape.localToGlobal(point).x);
-			trace("stageMouseY:" + smallShape.localToGlobal(point).y);
-			
-			var str:String = ary.join("\n");
-			bigShape.showText(str);
-			
 			e.stopPropagation();
+			var ary:Array = [];
+			var stagePoint:Point = new Point(stage.mouseX, stage.mouseY);
+			ary.push("stage:(" + stagePoint.x + "," + stagePoint.y + ")");								
+			ary.push("stage.globalToLocal:(" + stage.globalToLocal(stagePoint).x + "," + stage.globalToLocal(stagePoint).y + ")");								
+			ary.push("small.globalToLocal:(" + smallShape.globalToLocal(stagePoint).x + "," + smallShape.globalToLocal(stagePoint).y + ")");								
+			ary.push("big.globalToLocal:(" + bigShape.globalToLocal(stagePoint).x + "," + bigShape.globalToLocal(stagePoint).y + ")");								
+			ary.push(" ");
+			
+			var localPoint:Point = new Point(e.localX, e.localY);	
+			ary.push("local:(" + localPoint.x + "," + localPoint.y + ")");
+			ary.push("stage.localToGlobal:(" + stage.localToGlobal(localPoint).x + "," + stage.localToGlobal(localPoint).y + ")");
+			ary.push("small.localToGlobal:(" + smallShape.localToGlobal(localPoint).x + "," + smallShape.localToGlobal(localPoint).y + ")");
+			ary.push("big.localToGlobal:(" + bigShape.localToGlobal(localPoint).x + "," + bigShape.localToGlobal(localPoint).y + ")");
+			bigShape.showText(ary.join("\n"));
 		}
 		
 		private function onClickHandler2(e:MouseEvent):void
 		{
 			e.stopPropagation();
+			var ary:Array = [];
 			var stagePoint:Point = new Point(stage.mouseX, stage.mouseY);
-			trace(stagePoint.x);									//350
-			trace(stagePoint.y);									//350
-			trace(stage.globalToLocal(stagePoint).x);				//350
-			trace(stage.globalToLocal(stagePoint).y);				//350
-			trace(smallShape.globalToLocal(stagePoint).x);			//150
-			trace(smallShape.globalToLocal(stagePoint).y);			//150
-			trace(bigShape.globalToLocal(stagePoint).x);			//300
-			trace(bigShape.globalToLocal(stagePoint).y);			//300
+			ary.push("stage:(" + stagePoint.x + "," + stagePoint.y + ")");								
+			ary.push("stage.globalToLocal:(" + stage.globalToLocal(stagePoint).x + "," + stage.globalToLocal(stagePoint).y + ")");								
+			ary.push("small.globalToLocal:(" + smallShape.globalToLocal(stagePoint).x + "," + smallShape.globalToLocal(stagePoint).y + ")");								
+			ary.push("big.globalToLocal:(" + bigShape.globalToLocal(stagePoint).x + "," + bigShape.globalToLocal(stagePoint).y + ")");									
+			ary.push(" ");						
+			
 			var localPoint:Point = new Point(e.localX, e.localY);	
-			trace(localPoint.x);									//150
-			trace(localPoint.y);									//150
-			trace(stage.localToGlobal(localPoint).x);				//150
-			trace(stage.localToGlobal(localPoint).y);				//150
-			trace(smallShape.localToGlobal(localPoint).x);			//350
-			trace(smallShape.localToGlobal(localPoint).y);			//350
-			trace(bigShape.localToGlobal(localPoint).x);			//200
-			trace(bigShape.localToGlobal(localPoint).y);			//200
+			ary.push("local:(" + localPoint.x + "," + localPoint.y + ")");
+			ary.push("stage.localToGlobal:(" + stage.localToGlobal(localPoint).x + "," + stage.localToGlobal(localPoint).y + ")");
+			ary.push("small.localToGlobal:(" + smallShape.localToGlobal(localPoint).x + "," + smallShape.localToGlobal(localPoint).y + ")");
+			ary.push("big.localToGlobal:(" + bigShape.localToGlobal(localPoint).x + "," + bigShape.localToGlobal(localPoint).y + ")");
+			smallShape.showText(ary.join("\n"));
 		}
 	}
 }

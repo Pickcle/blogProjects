@@ -22,7 +22,7 @@ package
 			
 			var tf:TextFormat = new TextFormat();
 			tf.align = TextFieldAutoSize.LEFT;
-			tf.size = 16;
+			tf.size = 15;
 			tf.color = 0x000000;
 			
 			_textField = new TextField();
